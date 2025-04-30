@@ -8,9 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+enum testEnum 
+{ 
+    start,
+    end=10000000
+}
 namespace WindowsFormsApp_01_if
 {
-    
+
+
     public partial class Form1 : Form
     {
         public Form1()
@@ -21,17 +27,73 @@ namespace WindowsFormsApp_01_if
 
             
         }
-        void ViewText(bool inputBool)
+        #region # enum
+        enum Food
         {
-            if (CoinToss(inputBool))
-            {
-                textBox1.Text = ("승리");
-            }
-            else
-            {
-                textBox1.Text = ("패배");
-            }
+            Pizza,
+            Burger,
+            Pasta,
+            Kimchi=100
+
         }
+        enum Week
+        {
+            Monday,
+            Tuesday,
+            Wednesday,
+            Thursday,
+            Friday,
+            Saturday,
+            Sunday,
+            Error=999
+        }
+        #endregion
+        #region #  switch
+        void TestSwitch()
+        {
+            string anmal = "cat";
+            switch(anmal)
+            {
+                case "dog":
+                    MessageBox.Show("강아지");
+                    break;
+                case "cat":
+                    MessageBox.Show("고양이");
+                    break;
+                case "tiger":
+                    MessageBox.Show("호랑이");
+                    break;
+                default:
+                    MessageBox.Show("모르겠다.");
+                    break;
+            }
+
+            //같은 enum 타입만 비교가능하고 다른 enum 타입은 비교 불가
+            Food food = Food.Pizza;
+            if(food==Food.Pizza)
+            {
+
+            }
+            switch(food)
+            {
+                case Food.Pizza:
+                    MessageBox.Show("피자");
+                    break;
+                case Food.Burger:
+                    MessageBox.Show("햄버거");
+                    break;
+                case Food.Pasta:
+                    MessageBox.Show("파스타");
+                    break;
+                default:
+                    MessageBox.Show("모르겠다.");
+                    break;
+            }
+
+        }
+
+        #endregion
+
         #region # 개인 if문 실습
         bool RandomNumber(bool isinput)
         {
@@ -81,7 +143,19 @@ namespace WindowsFormsApp_01_if
         }
         #endregion
 
+        #region # 실습 3
 
+        void ViewText(bool inputBool)
+        {
+            if (CoinToss(inputBool))
+            {
+                textBox1.Text = ("승리");
+            }
+            else
+            {
+                textBox1.Text = ("패배");
+            }
+        }
         private void radioButtonTrue_CheckedChanged(object sender, EventArgs e)
         {
             bool isTure = true;
@@ -103,7 +177,7 @@ namespace WindowsFormsApp_01_if
                 textBox1.Text = "잘못된 입력 입니다";
             }
             if (textBoxInput.Text == "" || textBoxInput.Text == string.Empty)
-            {
+            {//textBoxInput.Text.Length>0
                 ViewText(radioButtonTrue.Checked);
             }
 
@@ -115,4 +189,5 @@ namespace WindowsFormsApp_01_if
             ViewText( isTure);
         }
     }
+    #endregion
 }
