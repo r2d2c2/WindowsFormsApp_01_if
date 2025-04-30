@@ -16,8 +16,18 @@ namespace WindowsFormsApp_01_if
         {
             InitializeComponent();
             
-            RandomNumber(false);
+            //RandomNumber(false);
+
+            if(CoinToss(true))
+            {
+                textBox1.Text=("승리");
+            }
+            else
+            {
+                textBox1.Text=("패배");
+            }
         }
+        #region # 개인 if문 실습
         bool RandomNumber(bool isinput)
         {
             int isZeroOne;
@@ -50,5 +60,20 @@ namespace WindowsFormsApp_01_if
             }
             return isinput;
         }
+        #endregion
+        #region 동전던지기 실습
+        bool CoinToss(bool isinput)
+        {
+            int isZeroOne;
+            //int형 난수 생성
+            Random random = new Random();
+            int randomNumber = random.Next() % 2;
+            
+            if((randomNumber==1&&isinput==true)||(randomNumber==0&&isinput==false))
+                return true;
+
+            return false;
+        }
+        #endregion
     }
 }
