@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp_01_if
 {
+    
     public partial class Form1 : Form
     {
         public Form1()
@@ -18,13 +19,17 @@ namespace WindowsFormsApp_01_if
             
             //RandomNumber(false);
 
-            if(CoinToss(true))
+            
+        }
+        void ViewText(bool inputBool)
+        {
+            if (CoinToss(inputBool))
             {
-                textBox1.Text=("승리");
+                textBox1.Text = ("승리");
             }
             else
             {
-                textBox1.Text=("패배");
+                textBox1.Text = ("패배");
             }
         }
         #region # 개인 if문 실습
@@ -75,5 +80,39 @@ namespace WindowsFormsApp_01_if
             return false;
         }
         #endregion
+
+
+        private void radioButtonTrue_CheckedChanged(object sender, EventArgs e)
+        {
+            bool isTure = true;
+            ViewText( isTure);
+        }
+
+        private void buttonInput_Click(object sender, EventArgs e)
+        {
+            //textBox1.Text = textBoxInput.Text;// 택스트 붙붙
+
+            
+            try
+            {
+                bool isText = bool.Parse(textBoxInput.Text);
+                ViewText( isText);
+            }
+            catch (Exception ex)
+            {
+                textBox1.Text = "잘못된 입력 입니다";
+            }
+            if (textBoxInput.Text == "" || textBoxInput.Text == string.Empty)
+            {
+                ViewText(radioButtonTrue.Checked);
+            }
+
+        }
+
+        private void radioButtonfalse_CheckedChanged(object sender, EventArgs e)
+        {
+            bool isTure = false;
+            ViewText( isTure);
+        }
     }
 }
