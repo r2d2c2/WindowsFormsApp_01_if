@@ -39,7 +39,14 @@ namespace WindowsFormsApp_swithcRuning
             InitializeComponent();
             // KeyDown 이벤트 핸들러 등록
             textBox1.KeyDown += TextBox1_KeyDown;
+            textBox1.KeyPress += MyTest;
         }
+
+        private void MyTest(object sender, KeyPressEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         private void TextBox1_KeyDown(object sender, KeyEventArgs e)
         {
             // 엔터키를 감지

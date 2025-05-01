@@ -22,12 +22,67 @@ namespace WindowsFormsApp_01_if
         public Form1()
         {
             InitializeComponent();
-            
+
             //RandomNumber(false);
 
-            
+            GotoSwitch();
+
         }
+        #region # goto문
+        void TestGoto()
+        {
+            int i = 0;
+            goto end;  // +1을 건너뛰고 이동
+            i++;
+        end:
+            MessageBox.Show("i=" + i);
+        }
+
+        void TestGoto2()
+        {
+            int selection = 0;
+            textBox_print.Text = "Start \r\n";
+        Location:
+            textBox_print.Text += "Location \r\n";
+            if(selection == 0)
+            {
+                textBox_print.Text+= "if문안 \r\n";
+                selection = 1;
+                goto Location;
+            }
+        }
+        //goto switch문
+        //switch문에서 중복없이 처리하기위함
+        void GotoSwitch()
+        {
+            CoffeeMenu choice = CoffeeMenu.WithIceCream;
+            switch (choice)
+            {
+                case CoffeeMenu.Plain:
+                    textBox_print.Text += "Coffee";
+                    break;
+                case CoffeeMenu.WithMilk:
+                    textBox_print.Text += " with Milk";
+                    break;
+                case CoffeeMenu.WithIceCream:
+                    textBox_print.Text += " with Ice Cream";
+                    goto case CoffeeMenu.Plain;
+                    //break;
+                default:
+                    textBox_print.Text += " Coffee";
+                    break;
+            }
+        }
+
+        #endregion
+
         #region # enum
+        enum CoffeeMenu
+        {
+            Plain,
+            WithMilk,
+            WithIceCream
+        }
         enum Food
         {
             Pizza,
