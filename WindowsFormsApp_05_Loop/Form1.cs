@@ -48,6 +48,20 @@ namespace WindowsFormsApp_05_Loop
             }
             Console.WriteLine($"짝수의 합 : {mySum}");
             #endregion
+            #region # 실습 2
+            Console.WriteLine("---------------------");
+            int sum2 = 0;
+            for (int i = 1; i < 100; i++)
+            {
+                if(i%3==0)
+                    if (!(i % 5 == 0))
+                    {
+                        Console.WriteLine(i);
+                        sum2 += i;
+                    }
+            }
+            Console.WriteLine($"3의 배수지만 5의 배수는 아닌수의 종합 : {sum2}");
+            #endregion
         }
 
     }
