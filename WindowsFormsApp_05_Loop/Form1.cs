@@ -149,14 +149,9 @@ namespace WindowsFormsApp_05_Loop
             #region # 실습 for
             textBox2.Text = "";
             int input =0;
-            try
+            if(!int.TryParse(textBox1.Text, out input))
             {
-                input = int.Parse(textBox1.Text);
-            }
-            catch (Exception ex)
-            {
-                textBox2.Text = ("숫자를 입력하세요");
-
+                textBox2.Text = "잘못된 입력입니다.";
             }
             Random random = new Random();
             //학생 점수
