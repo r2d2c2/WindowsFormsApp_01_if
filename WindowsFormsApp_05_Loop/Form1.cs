@@ -99,6 +99,21 @@ namespace WindowsFormsApp_05_Loop
                 Console.WriteLine();
             }
             #endregion
+            #region # 별찍기2
+            Console.WriteLine("--------------------");
+            for (int i = 1; i <= 7; i+=2)
+            {
+                for (int k = 1; k <= ((int)((Math.Abs(7 - i)/2))); k++)
+                {
+                    Console.Write(" ");
+                }
+                for (int j = 1; j <= i; j++)
+                {
+                    Console.Write("*");
+                }
+                Console.WriteLine();
+            }
+            #endregion
         }
 
     }
