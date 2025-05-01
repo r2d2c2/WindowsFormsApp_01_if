@@ -146,23 +146,20 @@ namespace WindowsFormsApp_EnumIf
         private void button1_Click(object sender, EventArgs e)
         {//가위
             GamePlayer(RPS.Scissors);
-            textBox2.Text = playerScore.ToString();
-            textBox3.Text = comScore.ToString();
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {//바위
             GamePlayer(RPS.Rock);
-            textBox2.Text = playerScore.ToString();
-            textBox3.Text = comScore.ToString();
+
 
         }
 
         private void button3_Click(object sender, EventArgs e)
         {//보
             GamePlayer(RPS.Paper);
-            textBox2.Text = playerScore.ToString();
-            textBox3.Text = comScore.ToString();
+;
         }
     }
      
