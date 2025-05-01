@@ -114,7 +114,60 @@ namespace WindowsFormsApp_05_Loop
                 Console.WriteLine();
             }
             #endregion
+
+            #region #for 배열
+            Console.WriteLine("--------------------");
+            string[] fruits = { "사과", "배", "귤", "포도", "복숭아" };
+            foreach (string fruit in fruits)
+            {
+                Console.WriteLine(fruit);
+            }
+            Console.WriteLine("--------------------");
+            int[] scores = { 85,90,78,92,88 };
+            int sum4 = 0;
+            // scores 정렬
+            Array.Sort(scores);
+            Console.WriteLine(scores.Average());// 평균
+            Console.WriteLine(scores.Sum());// 합계
+            foreach (int score in scores)
+            {
+                sum4 += score;
+            }
+            Console.WriteLine($"점수의 합계 : {sum4}");
+            Console.WriteLine($"점수의 평균 : {sum4 / scores.Length}");
+
+            #endregion
+
+
+
+
+
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            #region # 실습 for
+            textBox2.Text = "";
+            int input =0;
+            try
+            {
+                input = int.Parse(textBox1.Text);
+            }
+            catch (Exception ex)
+            {
+                textBox2.Text = ("숫자를 입력하세요");
+
+            }
+            Random random = new Random();
+            //학생 점수
+            int[] studentScore = new int[input];
+            for (int i = 0; i < input; i++)
+            {
+                studentScore[i]= random.Next(1, 101);
+                textBox2.Text += $"학생{i+1}의 점수 : {studentScore[i]} \r\n ";
+            }
+            
+            #endregion
+        }
     }
 }

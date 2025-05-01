@@ -32,6 +32,9 @@ namespace WindowsFormsApp_EnumIf
         public Form1()
         {
             InitializeComponent();
+            label3.Visible = false;
+            textBox1.Text = "게임을 시작해 주세요";
+
             GameStatus();
         }
 
@@ -69,7 +72,7 @@ namespace WindowsFormsApp_EnumIf
                         comScore++;
                         return Result.Draw;
                     }
-                    else if (rps == RPS.Scissors)
+                    else if (rps == RPS.Paper)
                     {
                         textBox1.Text += "당신이 이겼습니다.";
                         playerScore++;
@@ -89,7 +92,7 @@ namespace WindowsFormsApp_EnumIf
                         comScore++;
                         return Result.Draw;
                     }
-                    else if (rps == RPS.Rock)
+                    else if (rps == RPS.Scissors)
                     {
                         textBox1.Text += "당신이 이겼습니다.";
                         playerScore++;
@@ -106,29 +109,24 @@ namespace WindowsFormsApp_EnumIf
         }
         void GameStatus()
         {//게임 전체 관리 로직
-            label3.Visible = false;
-            textBox1.Text= "게임을 시작해 주세요";
-            Task task = Task.Run(() =>
+
+            textBox2.Text = playerScore.ToString();
+            textBox3.Text = comScore.ToString();
+            if (playerScore == 3)
             {
-                while (true)
-                {
-                    textBox2.Text = playerScore.ToString();
-                    textBox3.Text = comScore.ToString();
-                    if (playerScore == 3)
-                    {
-                        textBox1.Text += "당신이 이겼습니다.(＊`・ ﾜ・´＊)ノ";
-                        GameReset();
-                        return;
-                    }
-                    else if (comScore == 3)
-                    {
-                        textBox1.Text += "마왕이 우주정복을 했어요 ૮ ․ ․ ྀིა.";
-                        GameReset();
-                        return;
-                    }
-                }
-            });
-            task.Start();
+                textBox1.Text = "";
+                textBox1.Text += "당신이 이겼습니다.(＊`・ ﾜ・´＊)ノ";
+                GameReset();
+                return;
+            }
+            else if (comScore == 3)
+            {
+                textBox1.Text = "";
+                textBox1.Text += "마왕이 우주정복을 했어요 ૮ ․ ․ ྀིა.";
+                GameReset();
+                return;
+            }
+
 
         }
         async void GameReset()
@@ -140,26 +138,28 @@ namespace WindowsFormsApp_EnumIf
             gameCount = 0;
             textBox2.Text = playerScore.ToString();
             textBox3.Text = comScore.ToString();
+            await Task.Delay(5000);
+            label3.Visible = false;
+            textBox1.Text = "게임을 시작해 주세요";
             GameStatus();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {//가위
             GamePlayer(RPS.Scissors);
-
+            GameStatus();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {//바위
             GamePlayer(RPS.Rock);
-
-
+            GameStatus();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {//보
             GamePlayer(RPS.Paper);
-;
+            GameStatus();
         }
     }
      
