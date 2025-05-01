@@ -62,6 +62,27 @@ namespace WindowsFormsApp_05_Loop
             }
             Console.WriteLine($"3의 배수지만 5의 배수는 아닌수의 종합 : {sum2}");
             #endregion
+            #region # 중첩for문
+            Console.WriteLine("---------------------");
+            for (int i =1; i <= 3; i++)
+            {
+                for (int j = 1; j <= 2; j++)
+                {
+                    Console.WriteLine($"i={i}, j={j}");
+                }
+            }
+
+            #endregion
+            #region #구구단
+            Console.WriteLine("---------------------");
+            for (int i = 2; i < 10; i++)
+            {
+                for (int j = 1; j < 10; j++)
+                {
+                    Console.WriteLine($"{i}*{j}={i*j}");
+                }
+            }
+            #endregion
         }
 
     }
